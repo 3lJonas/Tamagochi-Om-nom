@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz Principal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('imagenes/Patio.jpg');
+            background-size: cover;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-top: -600px; /* Ajusta el valor según sea necesario */
+            position: relative;
+        }
+
+        button {
+            background: none;
+            border: none;
+            margin: 30px;
+            cursor: pointer;
+        }
+
+        .button-image {
+            width: 50px;
+            height: 50px;
+        }
+
+        .column-texts {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 20px; /* Ajusta el valor según sea necesario */
+            left: 20px; /* Ajusta el valor según sea necesario */
+            color: rgb(14, 13, 13);
+            z-index: 997;
+        }
+
+        .column-texts div {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .column-texts img {
+            width: 30px; /* Ajusta el valor según sea necesario */
+            height: 30px; /* Ajusta el valor según sea necesario */
+            margin-right: 10px;
+        }
+
+        #imagenEncima {
+            position: absolute;
+            top: 200px; /* Ajusta el valor según sea necesario */
+            left: 70%;
+            transform: translateX(-50%) scale(0.7); /* Ajusta el valor de scale según sea necesario */
+            z-index: 999; /* Asegura que esté encima de los demás elementos */
+        }
+
+        #textoEncima {
+            position: absolute;
+            top: 270px; /* Ajusta el valor según sea necesario */
+            left: 70%;
+            transform: translateX(-50%);
+            color: rgb(14, 13, 13);
+            font-size: 24px;
+            z-index: 1000; /* Asegura que esté encima de los demás elementos */
+        }
+
+        #textoEsquina {
+            position: fixed;
+            top: 10px; /* Ajusta el valor según sea necesario */
+            right: 10px; /* Ajusta el valor según sea necesario */
+            color: rgb(14, 13, 13);
+            font-size: 20px;
+            
+        }
+
+        .fondo {
+            color: #333;
+            font-size: 24px;
+            
+            padding: 10px;
+            background-color: rgba(255,255,255,0.8);
+            border: 1px solid #ddd;  
+            }
+
+        #botonAccion {
+            position: absolute;
+            top: 380px;
+            left: 10%;
+            transform: translateX(-200%);
+            z-index: 1000;
+            color: rgb(14, 13, 13);
+            font-size: 80px;
+        }
+        #mensajes {
+            height: 100px; 
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .contenedor {
+            display: flex; /* Utilizamos flexbox para alinear los elementos en línea */
+            align-items: center; /* Centramos verticalmente los elementos en el contenedor */
+        }
+        #text1 {
+            margin-right: 10px; /* Ajusta el espacio entre los elementos según tu preferencia */
+        }
+    </style>
+</head>
+<body>
+    <div class="column-texts">
+
+        <div class="fondo">
+            <div class="contenedor">
+                <div id="text1"></div>
+                <div id="textEstado">Estado: <span>💀😭😀😠</span> 
+                </div>
+            </div>
+            <div id="text2">
+                <img src="imagenes/corazonPixeles.png" alt="Image 2">
+                Vida
+            </div>
+            <div id="text3">
+                <img src="imagenes/felicidadPixeles.png" alt="Image 3">
+                Felicidad
+            </div>
+            <div id="text4">
+                <img src="imagenes/pesoPixel.png" alt="Image 4">
+                Peso
+            </div>
+            <div id="text5">
+                <img src="imagenes/vistoPixel.png" alt="Image 5">
+                Quiere ir al baño
+            </div>
+            <div id="text6">
+                <img src="imagenes/xPixel.png" alt="Image 6">
+                Quiere ir a dormir
+            </div>            
+
+        </div>
+        <div class="fondo">
+            <div id="mensajes"></div>
+        </div>
+          
+    </div>
+
+    <div class="button-container">
+        <button onclick="goToSalaPrincipal()">
+            <img src="imagenes/sala.png" alt="SalaPrincipal" class="button-image">
+        </button>
+
+        <button onclick="goToComer()">
+            <img src="imagenes/comida.png" alt="Comer" class="button-image">
+        </button>
+
+        <button onclick="goToDormir()">
+            <img src="imagenes/dormirr.png" alt="Dormir" class="button-image">
+        </button>
+
+        <button onclick="goToBanio()">
+            <img src="imagenes/baño.png" alt="Baño" class="button-image">
+        </button>
+
+        <button onclick="guardados.accionarBotonesDidacticos('guardar')">
+            <img src="imagenes/guarda.png" alt="Guardar" class="button-image">
+        </button>
+
+        <button onclick="guardados.accionarBotonesDidacticos('salir')">
+            <img src="imagenes/salir.png" alt="Salir" class="button-image">
+        </button>
+
+        <!-- Nueva imagen encima -->
+        <img id="imagenEncima" src="imagenes/om nom jugando.gif" alt="Imagen Encima">
+        <!-- Nuevo texto encima de la imagen -->
+        <div id="textoEncima">¡Diviértete jugando!</div>
+        <button id="botonAccion" onclick="guardados.accionarBotonesDidacticos('jugar')">
+            <img src="imagenes/boton de jugar.png" alt="Jugar" class="button-image">
+        </button>
+        <!-- Nuevo texto en la esquina superior derecha -->
+        <div id="textoEsquina">Bienvenido, Jugador</div>
+
+        <script src="Guardados.js"></script>
+        <script>
+            let guardados = new Guardados();
+            guardados.cargarDatos();
+            </script>
+    </div>
+</body>
+</html>

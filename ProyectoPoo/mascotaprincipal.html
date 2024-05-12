@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('imagenes/fondologin.png');
+            background-size: cover;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* Añadido para separar los botones */
+        }
+
+        #createPetForm {
+            display: none;
+        }
+
+        #loadingOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 999;
+        }
+
+        #loadingOverlay.active {
+            display: flex;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #imagenEncima {
+            position: absolute;
+            top: 280px;
+            left: 90%;
+            transform: translateX(-50%) scale(0.5);
+            z-index: 999;
+        }
+
+        #imagenEncima2 {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%) scale(1.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loadingOverlay">
+        <div class="loader"></div>
+        <p>Loading...</p>
+    </div>
+
+    <form id="loginForm">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" onclick="guardados.login()">Iniciar sesión</button>
+        <button type="button" onclick="toggleCreatePetForm()">Crear Mascota</button>
+    </form>
+
+    <form id="createPetForm">
+        <label for="petName">Nombre de la mascota:</label>
+        <input type="text" id="petName" name="petName" required>
+
+        <label for="newUsername">Nuevo Usuario:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+
+        <label for="newPassword">Nueva Contraseña:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+
+        <label for="confirmPassword">Confirmar Contraseña:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+        <button type="button" onclick="guardados.crearPartida()">Crear Mascota</button>
+        <button type="button" onclick="goBackToLogin()">Regresar</button>
+    </form>
+
+    <!-- Nueva imagen encima ... -->
+
+    <script src="Guardados.js"></script>
+    <script>
+   
+        let guardados = new Guardados();
+ 
+    </script>
+</body>
+</html>
